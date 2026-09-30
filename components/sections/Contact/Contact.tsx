@@ -38,11 +38,23 @@ export const Contact = (): JSX.Element => {
         <dt>{t.hours}</dt>
         <dd>{t.hoursValue}</dd>
         <dt>{t.phone}</dt>
-        <dd>{t.phoneValue}</dd>
+        <dd>
+          <a href={SITE.phoneHref}>{t.phoneValue}</a>
+        </dd>
         <dt>{t.email}</dt>
-        <dd>{t.emailValue}</dd>
+        <dd>
+          <a href={SITE.emailHref}>{t.emailValue}</a>
+        </dd>
         <dt>{t.booking}</dt>
-        <dd>{t.bookingValue}</dd>
+        <dd>
+          <a
+            href={SITE.instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t.bookingValue}
+          </a>
+        </dd>
       </dl>
     </section>
   );

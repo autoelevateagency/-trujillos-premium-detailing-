@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState, type JSX } from "react";
 import { useLocale } from "@/context/LocaleContext";
+import { MediaVideo } from "@/components/MediaVideo/MediaVideo";
+import { WORK_VIDEOS } from "@/data/media";
 
 export const Work = (): JSX.Element => {
   const { dictionary } = useLocale();
@@ -9,6 +11,7 @@ export const Work = (): JSX.Element => {
   const trackRef = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState(0);
   const [indexLabel, setIndexLabel] = useState("01 / 06");
+  const [activeIndex, setActiveIndex] = useState(0);
   const dragRef = useRef({ down: false, startX: 0, scrollLeft: 0 });
 
   useEffect(() => {
@@ -21,6 +24,7 @@ export const Work = (): JSX.Element => {
       setProgress(p * 100);
       const n = Math.min(6, Math.round(p * 5) + 1);
       setIndexLabel(`0${n} / 06`);
+      setActiveIndex(n - 1);
     };
 
     const onWheel = (e: WheelEvent): void => {
@@ -82,21 +86,13 @@ export const Work = (): JSX.Element => {
       </div>
       <div className="track" ref={trackRef}>
         {t.items.map((item, i) => (
-          <div
-            key={item.title}
-            className="sl"
-            style={{ background: item.background }}
-          >
-            {item.showCar ? (
-              <svg
-                className="c"
-                viewBox="0 0 800 230"
-                style={i % 2 ? { left: "-45%" } : undefined}
-                aria-hidden="true"
-              >
-                <use href="#car" />
-              </svg>
-            ) : null}
+          <div key={item.title} className="sl">
+            <MediaVideo
+              className="media-fill"
+              src={WORK_VIDEOS[i]}
+              active={Math.abs(i - activeIndex) <= 1}
+            />
+            <div className="media-shade" />
             <div className="n">{`0${i + 1}`}</div>
             <div className="cap">
               <span className="lab">{item.caption}</span>

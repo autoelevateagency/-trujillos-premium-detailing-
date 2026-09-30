@@ -31,7 +31,6 @@ export type Dictionary = {
       number: string;
       title: string;
       description: string;
-      panelClass: string;
     }>;
   };
   work: {
@@ -39,11 +38,11 @@ export type Dictionary = {
     items: Array<{
       title: string;
       caption: string;
-      background: string;
-      showCar: boolean;
     }>;
   };
   testimonials: {
+    label: string;
+    title: string;
     items: Array<{
       quote: string;
       by: string;

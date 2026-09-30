@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant, Jost } from "next/font/google";
 import { LocaleProvider } from "@/context/LocaleContext";
 import { getDictionary } from "@/lib/dictionary";
@@ -20,9 +20,23 @@ const body = Jost({
 
 const dictionary = getDictionary("EN");
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#080808",
+};
+
 export const metadata: Metadata = {
   title: dictionary.meta.title,
   description: dictionary.meta.description,
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.png", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-icon.png", type: "image/png" }],
+  },
 };
 
 export default function RootLayout({

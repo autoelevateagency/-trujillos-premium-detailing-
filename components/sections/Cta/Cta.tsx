@@ -2,6 +2,8 @@
 
 import type { JSX } from "react";
 import { useLocale } from "@/context/LocaleContext";
+import { MediaVideo } from "@/components/MediaVideo/MediaVideo";
+import { CTA_VIDEO } from "@/data/media";
 
 export const Cta = (): JSX.Element => {
   const { dictionary } = useLocale();
@@ -9,6 +11,8 @@ export const Cta = (): JSX.Element => {
 
   return (
     <section className="cta">
+      <MediaVideo className="cta-video" src={CTA_VIDEO} />
+      <div className="cta-shade" aria-hidden="true" />
       <h2 className="si rv">
         <span>{t.line1}</span>
         <span>{t.line2}</span>

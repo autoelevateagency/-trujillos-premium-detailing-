@@ -2,6 +2,8 @@
 
 import type { JSX } from "react";
 import { useLocale } from "@/context/LocaleContext";
+import { MediaVideo } from "@/components/MediaVideo/MediaVideo";
+import { HERO_VIDEO } from "@/data/media";
 
 export const Hero = (): JSX.Element => {
   const { dictionary } = useLocale();
@@ -9,9 +11,7 @@ export const Hero = (): JSX.Element => {
 
   return (
     <header className="hero" id="top">
-      <svg className="car" viewBox="0 0 800 230" aria-hidden="true">
-        <use href="#car" />
-      </svg>
+      <MediaVideo className="hero-video" src={HERO_VIDEO} />
       <div className="floor" />
       <div className="tx">
         <p className="lab" style={{ margin: "0 0 4vh" }}>

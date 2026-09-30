@@ -2,6 +2,8 @@
 
 import { useState, type JSX } from "react";
 import { useLocale } from "@/context/LocaleContext";
+import { MediaVideo } from "@/components/MediaVideo/MediaVideo";
+import { SERVICE_VIDEOS } from "@/data/media";
 
 export const Services = (): JSX.Element => {
   const { dictionary } = useLocale();
@@ -39,10 +41,13 @@ export const Services = (): JSX.Element => {
       </div>
       <div className="pan" aria-hidden="true">
         {t.items.map((item, index) => (
-          <div
-            key={item.id}
-            className={`${item.panelClass}${active === index ? " on" : ""}`}
-          />
+          <div key={item.id} className={active === index ? "on" : undefined}>
+            <MediaVideo
+              className="media-fill"
+              src={SERVICE_VIDEOS[index]}
+              active={active === index}
+            />
+          </div>
         ))}
       </div>
     </section>
